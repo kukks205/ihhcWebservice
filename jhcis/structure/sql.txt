@@ -1,0 +1,5 @@
+CREATE TABLE `hhc_amt_screen` (`amt_id` int(11) NOT NULL,`person_id` int(11) NOT NULL,`screen_date` date NOT NULL,`screen_time` time DEFAULT NULL,
+  `staff` varchar(20) NOT NULL,`amt_how_age` int(1) DEFAULT NULL,`amt_what_time` int(1) DEFAULT NULL,`amt_where_address` int(1) DEFAULT NULL,
+  `amt_what_year` int(1) DEFAULT NULL,`amt_where_this` int(1) DEFAULT NULL,`amt_who` int(1) DEFAULT NULL,`amt_brith_day` int(1) DEFAULT NULL,
+  `amt_14_oct` int(1) DEFAULT NULL,`amt_king` int(1) DEFAULT NULL,`amt_count_twenty` int(1) DEFAULT NULL,`total_score` int(2) NOT NULL,
+  PRIMARY KEY (`amt_id`,`person_id`)) ENGINE=MyISAM DEFAULT CHARSET=tis620;
