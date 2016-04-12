@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<!--
+        Identity by HTML5 UP
+        html5up.net | @n33co
+        Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>i-HHC Webservice 1.0</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-loading">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <section id="main">
+                <header>
+                    <span class="avatar"><img src="../images/jhcislogo.png" alt="" width="164" /></span>
+                    <h1>JHCIS <span style="text-transform:lowercase">ver.1.1</span></h1>
+                    <small>
+                        <span style="text-transform:lowercase">i</span>HHC W<span style="text-transform:lowercase">ebservice  For</span>  JHCIS
+                    </small>
+                </header>
+
+                <a href="#" onclick="processlist()" class="button"><i class="fa fa-database" aria-hidden="true"></i> U<span style="text-transform:lowercase">pgrade</span> S<span style="text-transform:lowercase">tructure</span></a>
+                <br>
+                <br>
+                <div class="field">
+                    <textarea name="message" id="message" placeholder="Message" rows="4" readonly="true" ></textarea>
+                </div>
+                <br>
+                <footer>
+                    <span style="font-size:16px;">พัฒนาโดย สุพัฒนา  ปิงเมือง<br>
+                        นักวิชาการสาธารณสุข ชำนาญการ <br>รพ.สต.ผักตบ อ.หนองหาน จ.อุดรธานี</span>
+                </footer>
+            </section>
+            <hr>
+            <!-- Footer -->
+            <footer id="footer">
+                <ul class="copyright">
+                    <li>&copy; i-HHC</li>
+                    <li>Design: <a href="#">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
+        </div>
+
+        <!-- Scripts -->
+        <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+        <script>
+            if ('addEventListener' in window) {
+                window.addEventListener('load', function () {
+                    document.body.className = document.body.className.replace(/\bis-loading\b/, '');
+                });
+                document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+            }
+
+//process
+            function processlist()
+            {
+
+                new Ajax.PeriodicalUpdater('message', 'progress.php', {
+                    method: 'get', frequency: 1, decay: 1
+                });
+            }
+//end
+        </script>
+        <script type="text/javascript"  src="../js/prototype.js"></script>
+
+    </body>
+</html>
