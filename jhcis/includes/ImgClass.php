@@ -31,7 +31,7 @@ class ImageDB {
      */
 
     public function selectPerImage($pid) {
-        $sql = "select person_image from person_image where person_id = :id";
+        $sql = "select photo from personimages where pid = :id";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(":id" => $pid));
@@ -68,20 +68,22 @@ class ImageDB {
 
     public function addPerPic($pid, $file) {
         
-        $sqlhn="select patient_hn as cc from person where person_id='$pid'";
+        $sqloffid="select offid as cc from office where offid<>'0000x' limit 1";
+        
         $row = 0;
-        $result = $this->conn->query($sqlhn, PDO::FETCH_OBJ);
+        $result = $this->conn->query($sqloffid, PDO::FETCH_OBJ);
         foreach ($result as $val) {
             if ($row > 0)
                 break;
             else
-                $hn = $val->cc;
+                $offid = $val->cc;
             $row = $row + 1;
         }
 
         $filename = $file['name'];
         $type = $file['type'];
         $source = $file['tmp_name'];
+        $photosize=$file['size'];
         $typename = explode("/", $type);
         $accepted_types = array('jpeg', 'png', 'gif', 'jpg');
         $temp_path = 'img_temp';
@@ -103,7 +105,7 @@ class ImageDB {
             $width = 350;
             $size = GetimageSize($source);
             $height = round($width * $size[1] / $size[0]);
-
+            $phototype=$typename[1];
             switch ($typename[1]) {
                 case 'jpg':
                     $image = imagecreatefromjpeg($source);
@@ -133,12 +135,9 @@ class ImageDB {
             fclose($of);
             $img = addslashes($rb);
             //end read image
-            $sql = "replace into person_image(person_id,person_image,capture_datetime) values('$pid','$img',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')) ";
-            $sqlpatient="replace into patient_image(hn,image_name,image,width,height,capture_date) 
-            values('$hn','OPD','$img',$width,$height,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')) ";
+            $sql = "replace into personimages(pcucodeperson,pid,photo,phototype,photosize,dateupdate) values('$pid','$img','$phototype','$photosize',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')) ";
+
             $upload = $this->conn->prepare($sql);
-            $upload->execute();
-            $upload = $this->conn->prepare($sqlpatient);
             $upload->execute();
             unlink($img_temp);
             return 'OK';
