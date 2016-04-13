@@ -99,9 +99,392 @@ INSERT INTO `ctypedisch` VALUES ('01', 'หาย'), ('02', 'ตาย'), ('03',
 endif;
 
 // End check table ctypedisch
+// start check table hhc_diag_map
+$sql_hhc_diag_map_check = "show tables like'hhc_diag_map'";
+$result_hhc_diag_map_check = $db->prepare($sql_hhc_diag_map_check);
+$result_hhc_diag_map_check->execute();
+
+if ($result_hhc_diag_map_check->rowCount() > 0):
+    $hhc_diag_map_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_diag_map check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_diag_map_check);
+
+else:
+    $hhc_diag_map_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_diag_map empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_diag_map_check);
+
+    $sql_hhc_diag_map = "CREATE TABLE `hhc_diag_map` (
+  `homehealthcode` varchar(7) NOT NULL DEFAULT '',
+  `pdx` varchar(7) DEFAULT NULL,
+  PRIMARY KEY (`homehealthcode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `hhc_diag_map` VALUES ('1A000', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A001', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A002', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A003', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A004', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A005', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A008', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A009', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A010', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A011', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A012', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A013', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A014', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A015', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A016', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A018', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A019', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A020', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A021', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A022', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A023', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A024', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A025', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A028', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A029', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A030', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A031', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A032', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A038', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A039', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A12', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A13', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A14', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A200', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A201', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A202', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A203', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A208', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A209', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A210', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A211', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A212', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A213', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A214', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A215', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A216', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A217', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A218', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A219', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A220', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A221', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A222', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A223', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A224', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A225', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A226', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A227', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A228', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A229', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A30', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A31', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A32', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A33', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A34', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A35', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A39', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A400', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A401', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A402', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A403', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A404', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A405', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A406', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A407', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A408', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A409', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A410', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A411', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A412', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A413', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A418', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A419', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A420', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A421', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A422', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A428', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A429', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A430', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A431', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A439', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A50', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A51', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A52', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A53', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A54', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A58', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A59', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A90', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1A99', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B000', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B001', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B002', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B003', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B004', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B005', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B008', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B009', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B020', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B021', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B022', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B023', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B024', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B025', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B028', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B029', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B100', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B101', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B102', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B103', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B108', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B109', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B110', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B111', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B112', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B118', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B119', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B120', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B121', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B128', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1B129', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C02', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C20', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C3', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1C4', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D02', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D03', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D04', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D05', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D08', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D09', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D12', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D13', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D20', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D21', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1D28', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E12', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E13', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1E18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F08', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F09', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F12', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F20', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F21', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F28', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1F29', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G08', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G09', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G12', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G13', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G14', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1G19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H000', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H001', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H010', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H020', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H030', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H040', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H041', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H050', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H051', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H060', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H061', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H070', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H071', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H200', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H201', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H202', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H203', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H204', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H205', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H206', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H207', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H210', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H211', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H212', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H213', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H214', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H215', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H216', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H217', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H280', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H281', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H288', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H300', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H301', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H302', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1H308', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I02', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I03', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I04', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I05', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I06', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I07', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1I08', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J00', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J01', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J02', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J03', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J04', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J05', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J08', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J09', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J10', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J11', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J18', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J19', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J20', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J21', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J22', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J23', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J24', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J25', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J26', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J27', 'Z71.8');
+INSERT INTO `hhc_diag_map` VALUES ('1J28', 'Z71.8');";
+
+    $import = $db->exec($sql_hhc_diag_map);
+    $import_hhc_diag_map = "Import Table hhc_diag_map Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_diag_map);
+endif;
+
+// End check table hhc_diag_map
+// start check table hhc_guideline_list
+$sql_hhc_guideline_list_check = "show tables like'hhc_guideline_list'";
+$result_hhc_guideline_list_check = $db->prepare($sql_hhc_guideline_list_check);
+$result_hhc_guideline_list_check->execute();
+
+if ($result_hhc_guideline_list_check->rowCount() > 0):
+    $hhc_guideline_list_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_guideline_list check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_guideline_list_check);
+
+else:
+    $hhc_guideline_list_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_guideline_list empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_guideline_list_check);
+
+    $sql_hhc_guideline_list = "CREATE TABLE `hhc_guideline_list` (
+  `hhc_guideline_list_id` int(11) NOT NULL AUTO_INCREMENT,
+  `person_visit_type_id` varchar(7) CHARACTER SET utf8 NOT NULL,
+  `hhc_guideline_list_subtype_id` int(11) NOT NULL,
+  `hhc_guideline_list_text` varchar(250) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`hhc_guideline_list_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;";
+
+    $import = $db->exec($sql_hhc_guideline_list);
+    $import_hhc_guideline_list = "Import Table hhc_guideline_list Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_guideline_list);
+endif;
+
+// End check table ctypedisch
+
+// start check table hhc_guideline_list_subtype
+$sql_hhc_guideline_list_subtype_check = "show tables like'hhc_guideline_list_subtype'";
+$result_hhc_guideline_list_subtype_check = $db->prepare($sql_hhc_guideline_list_subtype_check);
+$result_hhc_guideline_list_subtype_check->execute();
+
+if ($result_hhc_guideline_list_subtype_check->rowCount() > 0):
+    $hhc_guideline_list_subtype_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_guideline_list_subtype check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_guideline_list_subtype_check);
+
+else:
+    $hhc_guideline_list_subtype_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_guideline_list_subtype empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_guideline_list_subtype_check);
+
+    $sql_hhc_guideline_list_subtype = "CREATE TABLE `hhc_guideline_list_subtype` (
+  `hhc_guideline_list_subtype_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hhc_guideline_list_subtype_name` varchar(50) NOT NULL,
+  `hhc_guideline_type_id` int(11) NOT NULL,
+  PRIMARY KEY (`hhc_guideline_list_subtype_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('1', 'Subjective (ข้อมูลที่ได้จากผู้ป่วยบอกเล่า)', '1');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('2', 'Objective (ข้อมูลที่ได้จากผู้เยี่ยม)', '1');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('3', 'Assessment (การประเมิน)', '1');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('4', 'Plan management (การวางแผน)', '1');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('5', 'Immobility  Impairment  (การเคลื่อนไหวร่างกาย)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('6', 'Nutrition  (โภชนาการ)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('7', 'Housing  (ภาวะแวดล้อมทั่วไปของบ้าน)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('8', 'Other  people  (บุคคลอื่นที่เกี่ยวข้อง)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('9', 'Medication  (การใช้ยา)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('10', 'Examination (ตรวจร่างกาย)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('11', 'Safety (ความปลอดภัย)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('12', 'Spiritual (จิตวิญญาณ)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('13', 'Service(ความช่วยเหลือ)', '2');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('14', 'Interventions(บริการทางการพยาบาลที่ให้)', '1');
+INSERT INTO `hhc_guideline_list_subtype` VALUES ('15', 'Evaluation(การประเมินผลทางการพยาบาล)', '1');";
+
+    $import = $db->exec($sql_hhc_guideline_list_subtype);
+    $import_hhc_guideline_list_subtype = "Import Table hhc_guideline_list_subtype Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_guideline_list_subtype);
+endif;
+
+// End check table hhc_guideline_list_subtype
 
 
 
+// start check table hhc_guideline_type
+$sql_hhc_guideline_type_check = "show tables like'hhc_guideline_type'";
+$result_hhc_guideline_type_check = $db->prepare($sql_hhc_guideline_type_check);
+$result_hhc_guideline_type_check->execute();
+
+if ($result_hhc_guideline_type_check->rowCount() > 0):
+    $hhc_guideline_type_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_guideline_type check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_guideline_type_check);
+
+else:
+    $hhc_guideline_type_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_guideline_type empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_guideline_type_check);
+
+    $sql_hhc_guideline_type = "CREATE TABLE `hhc_guideline_type` (
+  `hhc_guideline_type_id` int(11) NOT NULL,
+  `hhc_guideline_type_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`hhc_guideline_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `hhc_guideline_type` VALUES ('1', 'SOAP');
+INSERT INTO `hhc_guideline_type` VALUES ('2', 'IN HOME SSS');";
+
+    $import = $db->exec($sql_hhc_guideline_type);
+    $import_hhc_guideline_type = "Import Table hhc_guideline_type Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_guideline_type);
+endif;
+
+// End check table hhc_guideline_type
 fclose($fp);
 ?>
 

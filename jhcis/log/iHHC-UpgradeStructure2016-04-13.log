@@ -1,3 +1,7 @@
-[2016-04-13 14:15:56] table chousechar check pass.....[OK]<br>
-[2016-04-13 14:15:56] table ctypearea check pass.....[OK]<br>
-[2016-04-13 14:15:56] table ctypedisch check pass.....[OK]<br>
+[2016-04-13 14:38:48] table chousechar check pass.....[OK]<br>
+[2016-04-13 14:38:48] table ctypearea check pass.....[OK]<br>
+[2016-04-13 14:38:48] table ctypedisch check pass.....[OK]<br>
+[2016-04-13 14:38:48] table hhc_diag_map check pass.....[OK]<br>
+[2016-04-13 14:38:48] table hhc_guideline_list check pass.....[OK]<br>
+[2016-04-13 14:38:48] table hhc_guideline_list_subtype check pass.....[OK]<br>
+[2016-04-13 14:38:48] table hhc_guideline_type check pass.....[OK]<br>
