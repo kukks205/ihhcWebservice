@@ -485,6 +485,53 @@ INSERT INTO `hhc_guideline_type` VALUES ('2', 'IN HOME SSS');";
 endif;
 
 // End check table hhc_guideline_type
+
+
+
+// start check table hhc_oxford_knee_score_screen
+$sql_hhc_oxford_knee_score_screen_check = "show tables like'hhc_oxford_knee_score_screen'";
+$result_hhc_oxford_knee_score_screen_check = $db->prepare($sql_hhc_oxford_knee_score_screen_check);
+$result_hhc_oxford_knee_score_screen_check->execute();
+
+if ($result_hhc_oxford_knee_score_screen_check->rowCount() > 0):
+    $hhc_oxford_knee_score_screen_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_oxford_knee_score_screen check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_oxford_knee_score_screen_check);
+
+else:
+    $hhc_oxford_knee_score_screen_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_oxford_knee_score_screen empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_oxford_knee_score_screen_check);
+
+    $sql_hhc_oxford_knee_score_screen = "CREATE TABLE `hhc_oxford_knee_score_screen` (
+  `oks_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `vn` varchar(13) DEFAULT NULL,
+  `screen_date` date DEFAULT NULL,
+  `screen_time` time DEFAULT NULL,
+  `pain` int(11) DEFAULT NULL,
+  `pain_knee` int(11) DEFAULT NULL,
+  `trouble_washing` int(11) DEFAULT NULL,
+  `trouble_car` int(11) DEFAULT NULL,
+  `able_walk` int(11) DEFAULT NULL,
+  `stand_up_chair` int(11) DEFAULT NULL,
+  `limping_walking` int(11) DEFAULT NULL,
+  `kneel_down_get_up` int(11) DEFAULT NULL,
+  `pain_at_night` int(11) DEFAULT NULL,
+  `pain_work` int(11) DEFAULT NULL,
+  `let_down` int(11) DEFAULT NULL,
+  `shopping` int(11) DEFAULT NULL,
+  `stairs` int(11) DEFAULT NULL,
+  `staff` varchar(25) DEFAULT NULL,
+  `total_point` int(11) DEFAULT NULL,
+  PRIMARY KEY (`oks_id`,`person_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=tis620;";
+
+    $import = $db->exec($sql_hhc_oxford_knee_score_screen);
+    $import_hhc_oxford_knee_score_screen = "Import Table hhc_oxford_knee_score_screen Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_oxford_knee_score_screen);
+endif;
+
+// End check table hhc_oxford_knee_score_screen
+
 fclose($fp);
 ?>
 
