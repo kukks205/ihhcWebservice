@@ -135,7 +135,7 @@ class ImageDB {
             fclose($of);
             $img = addslashes($rb);
             //end read image
-            $sql = "replace into personimages(pcucodeperson,pid,photo,phototype,photosize,dateupdate) values('$pid','$img','$phototype','$photosize',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')) ";
+            $sql = "replace into personimages(pcucodeperson,pid,photo,phototype,photosize,dateupdate) values('$offid','$pid','$img','$phototype','$photosize',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')) ";
 
             $upload = $this->conn->prepare($sql);
             $upload->execute();

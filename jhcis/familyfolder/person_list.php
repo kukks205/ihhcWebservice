@@ -10,7 +10,7 @@ $postData = json_decode(file_get_contents("php://input"));
 $sql = "select
 p.pid AS PID,
 p.idcard AS CID,
-p.sex AS PIMG,
+if((select pid from personimages where pid=p.pid and pcucodeperson=p.pcucodeperson) is null,(if(p.sex=1,1,2)),3) as PIMG,
 h.villcode as VILLCODE,
 concat(t.titlename,p.fname,'  ',p.lname) as PERSON_NAME,
 if(p.telephoneperson,1,0) as TEL,

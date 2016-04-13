@@ -9,9 +9,14 @@ include '../includes/DBConn.php';
 $postData = json_decode( file_get_contents("php://input") );
 
 $obj = $db->query("select p.pid as PID,p.hcode as HID,p.idcard as CID,
-p.prename as PRENAME,p.sex as PIMG,p.fname as `NAME`,p.lname as LNAME,
-p.sex as SEX,p.birth as BIRTH,p.marystatus as MSTATUS,p.educate as EDUCATE,
-p.occupa as OCCUPATION_NEW,p.nation as NATION,p.origin as RACE,p.religion as RELIGION,
+p.prename as PRENAME,if((select pid from personimages where pid=p.pid and pcucodeperson=p.pcucodeperson) is null,(if(p.sex=1,1,2)),3) as PIMG
+,p.fname as `NAME`,p.lname as LNAME,
+p.sex as SEX,p.birth as BIRTH,p.marystatus as MSTATUS,
+right(p.educate,1) as EDUCATE,
+p.occupa as OCCUPATION_NEW,
+(select  mapnation as cc from cnation where nationcode=p.nation) as NATION,
+(select  mapnation as cc from cnation where nationcode=p.origin) as RACE,
+p.religion as RELIGION,
 p.typelive as TYPEAREA,p.familyposition as FSTATUS,p.bloodgroup as ABOGROUP,
 case
 when p.bloodrh='P' then 1

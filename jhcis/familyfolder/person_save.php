@@ -11,32 +11,43 @@ $data = new dbClass();
 
 $postData = json_decode( file_get_contents("php://input") );
 
-$occupation=$data->GetStringData("select occupation as cc from occupation where occupation.nhso_code ='$postData->OCCUPATION_NEW' group by occupation.nhso_code ");
-$nation = $data->GetStringData("select nationality as cc from nationality where nhso_code='$postData->NATION' ");
-$race = $data->GetStringData("select nationality as cc from nationality where nhso_code='$postData->RACE' ");
-$religion = $data->GetStringData("select religion as cc from religion where nhso_code='$postData->RELIGION' ");
-$blood_group = $data->GetStringData("select  b.name as cc from blood_group as b where b.blood_id='$postData->ABOGROUP' ");
-$blood_rh = $data->GetStringData("select name as cc from blood_rh where rh_id='$postData->RHGROUP' ");
-$pname = $data->GetStringData("select provis_pname_short_name as cc from provis_pname where provis_pname_code='$postData->PRENAME' ");
+$offid=$data->GetStringData("select offid as cc from office where offid<>'0000x' limit 1");
+$nation=$data->GetStringData("select nationcode as cc from cnation where mapnation='$postData->NATION'");
+$race=$data->GetStringData("select nationcode as cc from cnation where mapnation='$postData->RACE'");
+$educate =$data->GetStringData("select concat('0',$postData->EDUCATE) as cc"); 
 
 
-$sql ="update person set pname='$pname',
+
+$rh=$postData->RHGROUP;
+
+switch ($rh) {
+     case "1":
+         $blood_rh='P';
+         break;
+     case "2":
+         $blood_rh='N';
+         break;
+     default:
+         $blood_rh=null;
+}
+
+$sql ="update person set prename='$postData->PRENAME',
 fname='$postData->NAME',
 lname='$postData->LNAME',
 sex='$postData->SEX',
-nationality='$nation',
-education ='$postData->EDUCATE',
-citizenship='$race',
-occupation='$occupation',
-religion='$religion',
-marrystatus = '$postData->MSTATUS',
-house_regist_type_id='$postData->TYPEAREA',
-birthdate='$postData->BIRTH',
-blood_group='$blood_group',
-bloodgroup_rh='$blood_rh',
-person_house_position_id='$postData->FSTATUS',
-person_discharge_id='$postData->DISCHARGE',
-mobile_phone='$postData->MOBILEPHONE' where person_id='$postData->PID'";
+nation='$nation',
+educate='$educate',
+origin='$race',
+religion='$postData->RELIGION',
+marystatus= '$postData->MSTATUS',
+typelive='$postData->TYPEAREA',
+birth='$postData->BIRTH',
+bloodgroup='$postData->ABOGROUP',
+bloodrh='$blood_rh',
+familyposition='$postData->FSTATUS',
+dischargetype='$postData->DISCHARGE',
+telephoneperson='$postData->MOBILEPHONE'
+where pid='$postData->PID'";
 
 
 
@@ -50,5 +61,6 @@ $r=['row'=>$count];
 $txt = json_encode($r);
 
 print($txt);
+
 
 ?>
