@@ -1,5 +1,5 @@
 <?PHP
-
+date_default_timezone_set("Asia/Bangkok");
 $filename = "log/iHHC-UpgradeStructure" . date("Y-m-d") . ".log";
 //$filename="log/log.txt";
 // การอ่านข้อมูลจาก Text File อีกรูปแบบนึง
