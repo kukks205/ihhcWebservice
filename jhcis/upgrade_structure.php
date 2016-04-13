@@ -524,13 +524,52 @@ else:
   `total_point` int(11) DEFAULT NULL,
   PRIMARY KEY (`oks_id`,`person_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=tis620;";
-
     $import = $db->exec($sql_hhc_oxford_knee_score_screen);
     $import_hhc_oxford_knee_score_screen = "Import Table hhc_oxford_knee_score_screen Complete.....[OK]<br> \n  ";
     fputs($fp, $import_hhc_oxford_knee_score_screen);
 endif;
 
 // End check table hhc_oxford_knee_score_screen
+
+
+// start check table hhc_person_adl_screen
+$sql_hhc_person_adl_screen_check = "show tables like'hhc_person_adl_screen'";
+$result_hhc_person_adl_screen_check = $db->prepare($sql_hhc_person_adl_screen_check);
+$result_hhc_person_adl_screen_check->execute();
+
+if ($result_hhc_person_adl_screen_check->rowCount() > 0):
+    $hhc_person_adl_screen_check = '[' . date('Y-m-d H:i:s') . '] ' . "table hhc_person_adl_screen check pass.....[OK]<br>\n";
+    fputs($fp, $hhc_person_adl_screen_check);
+
+else:
+    $hhc_person_adl_screen_check = '[' . date('Y-m-d h:i:s') . '] ' . "table hhc_person_adl_screen empty กำลังนำเข้าตาราง....";
+    fputs($fp, $hhc_person_adl_screen_check);
+
+    $sql_hhc_person_adl_screen = "CREATE TABLE `hhc_person_adl_screen` (
+  `adl_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `vn` varchar(13) DEFAULT NULL,
+  `screen_time` time NOT NULL,
+  `screen_date` date NOT NULL,
+  `feeding` int(11) DEFAULT NULL,
+  `transfer` int(11) DEFAULT NULL,
+  `mobility` int(11) DEFAULT NULL,
+  `dressing` int(11) DEFAULT NULL,
+  `bathing` int(11) DEFAULT NULL,
+  `groming` int(11) DEFAULT NULL,
+  `toilet_use` int(11) DEFAULT NULL,
+  `bowels` int(11) DEFAULT NULL,
+  `bladder` int(11) DEFAULT NULL,
+  `stairs` int(11) DEFAULT NULL,
+  `staff` varchar(25) NOT NULL,
+  PRIMARY KEY (`adl_id`,`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=tis620;";
+    $import = $db->exec($sql_hhc_person_adl_screen);
+    $import_hhc_person_adl_screen = "Import Table hhc_person_adl_screen Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_hhc_person_adl_screen);
+endif;
+
+// End check table hhc_person_adl_screen
 
 fclose($fp);
 ?>
