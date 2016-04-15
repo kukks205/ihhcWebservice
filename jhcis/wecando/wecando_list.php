@@ -8,6 +8,8 @@ include '../includes/function.php';
 
 $data = new dbClass();
 
+
+
 $postData = json_decode( file_get_contents("php://input") );
 
 $dm= $data->GetStringData("select sys_value as cc from sys_var where sys_name='dm_clinic_code' ");

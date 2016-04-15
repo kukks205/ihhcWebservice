@@ -22,6 +22,8 @@ and p.person_discharge_id='9'
 and p.patient_hn not in (select hn from clinicmember where clinic in ('$dm','$ht'))
 and h.doctor_code='$doctor'";
 
+
+
 $pop= $data->GetStringData($sql);
 
 $obj = $db->query("select '1' as id,'W:Worker' as name,'วัยทำงาน (25-59 ปี)' as desp,(select count(p.person_id) as cc  
