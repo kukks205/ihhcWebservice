@@ -55,7 +55,7 @@ class ImageDB {
     }
 
     public function HouseImageID($hid) {
-        $sql = "select house_image from house_image where house_image_id= :id order by house_image_id desc";
+        $sql = "select h.housepic from house as h where hcode= :id limit 1";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(array(":id" => $hid));
@@ -146,7 +146,7 @@ class ImageDB {
         endif;
     }
 
-    public function houseImgUpload($hid,$file,$text,$number) {
+    public function houseImgUpload($hid,$file) {
 
 
         $filename = $file['name'];
@@ -204,7 +204,8 @@ class ImageDB {
             fclose($of);
             $img = addslashes($rb);
             //end read image
-            $sql = "replace into house_image(house_image_id,house_id,house_image,image_description,image_number,image_taken_date) values(get_serialnumber('house_image_id'),'$hid','$img','$text',$number,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'))";
+            $sql="update house set housepic='$img',dateupdate=DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') where hcode='$hid'";
+            //$sql = "replace into house_image(house_image_id,house_id,house_image,image_description,image_number,image_taken_date) values(get_serialnumber('house_image_id'),'$hid','$img','$text',$number,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'))";
             $upload = $this->conn->prepare($sql);
             $upload->execute();
             unlink($img_temp);

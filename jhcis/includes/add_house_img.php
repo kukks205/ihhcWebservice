@@ -6,21 +6,8 @@ include 'ImgClass.php';
 
 $hid = $_POST['hid'];
 
-if (!empty($_POST['image_number'])):
-    $img_number = $_POST['image_number'];
-else:
-    $img_number = '0';
-endif;
-
-if (!empty($_POST['image_description'])):
-    $image_description = $_POST['image_description'];
-else:
-    $image_description = 'ไม่ระบุ';
-endif;
-
-
  $img = new ImageDB();
- $img->houseImgUpload($hid, $_FILES["file"], $image_description, $img_number);
+ $img->houseImgUpload($hid, $_FILES["file"]);
 
 /*$json_data = ['status'=>$status];
 $txt = json_encode($json_data);
