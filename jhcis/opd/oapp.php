@@ -11,13 +11,66 @@ $postData = json_decode( file_get_contents("php://input") );
 		$date = $postData->apdate;
 
 
-
-$obj = $db->query("select c.clinic as CLINIC,c.name as CLINIC_NAME,count(distinct p.patient_hn) as PCOUNT,
-	o.nextdate as APDATE
-from person p join oapp o on (o.hn=p.patient_hn) 
-join clinic c on (c.clinic=o.clinic) 
-where nextdate ='$date'  
-group by c.clinic order by c.name", PDO::FETCH_OBJ);
+                
+$obj = $db->query("select * from 
+(select 1 as CLINIC,
+'ตรวจโรคทั่วไป' as CLINIC_NAME,
+count(v.visitno)  as PCOUNT ,
+v.appodate as APDATE
+from
+visitdiagappoint AS v
+where v.appodate ='$date'  
+and v.diagcode not like 'z%' and v.diagcode not like 'e11%' and v.diagcode not like 'i10%' 
+union
+select 
+2 as CLINIC,
+'ทำแผล/ล้างแผล' as CLINIC_NAME,
+count(v.visitno)  as PCOUNT ,
+v.appodate as APDATE
+from
+visitdiagappoint AS v
+where v.appodate ='$date' 
+and v.diagcode like 'z4%' 
+union
+select 
+3 as CLINIC,
+'คลินิกเบาหวาน' as CLINIC_NAME,
+count(v.visitno)  as PCOUNT ,
+v.appodate as APDATE
+from
+visitdiagappoint AS v
+where v.appodate ='$date'  
+and v.diagcode like 'e11%'
+union
+select 
+4 as CLINIC,
+'คลินิกความดันโลหิตสูง' as CLINIC_NAME,
+count(v.visitno)  as PCOUNT ,
+v.appodate as APDATE
+from
+visitdiagappoint AS v
+where v.appodate ='$date'   
+and v.diagcode = 'i10'
+union
+select 
+5 as CLINIC,
+'คลินิกวางแผนครอบครัว/คุมกำเนิด' as CLINIC_NAME,
+count(v.visitno)  as PCOUNT ,
+v.appodate as APDATE
+from
+visitdiagappoint AS v
+where v.appodate ='$date' 
+and v.diagcode like 'z30%'
+union 
+select 
+6 as CLINIC,
+'สร้างเสริมภูมิคุ้มกันโรค' as CLINIC_NAME,
+count(distinct v.pid) as PCOUNT ,
+v.dateappoint as APDATE
+from
+visitepiappoint AS v
+where v.dateappoint ='$date'  ) as oapp
+where PCOUNT >0 order by PCOUNT desc ", PDO::FETCH_OBJ);
 $json_data = [];
 
 foreach ($obj as $k) {
