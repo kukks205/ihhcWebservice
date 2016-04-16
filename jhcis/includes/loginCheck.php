@@ -35,7 +35,7 @@ class loginCheck {
                 $return = json_encode($txt);
 
             else:
-                $sql = "select * from user where username='$username' and password='$password'";
+                $sql = "select concat(fname,'  ',lname) as `name`,grouplevel,`password`,officerposition from `user` where username='$username' and password='$password'";
                 $result = $this->conn->prepare($sql);
                 $result->execute();
                 $check = $result->rowCount();
@@ -46,20 +46,22 @@ class loginCheck {
                         while ($row = $result->fetch()) {
                             $token = $row['password'];
                             $accessright = $row['grouplevel'];
+                            $name = $row['name'];
+                            $position = $row['officerposition'];
                         }
-                        $txt = ['status' => 'success', 'token' => $token, 'acsessright' => $accessright];
+                        $txt = ['status' => 'success', 'token' => $token, 'acsessright' => $accessright, 'name' => $name, 'position' => $position];
 
                         $return = json_encode($txt);
 
                     else:
-                        $txt = ['status' => 'notsuccess', 'token' => 'null', 'acsessright' => 'null'];
+                        $txt = ['status' => 'notsuccess', 'token' => 'null', 'acsessright' => 'null', 'name' => 'null', 'position' => 'null'];
 
                         $return = json_encode($txt);
 
                     endif;
 
                 else:
-                    $txt = ['status' => 'notpass', 'token' => 'null', 'acsessright' => 'null'];
+                    $txt = ['status' => 'notpass', 'token' => 'null', 'acsessright' => 'null', 'name' => 'null', 'position' => 'null'];
 
                     $return = json_encode($txt);
 

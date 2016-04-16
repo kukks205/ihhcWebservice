@@ -1,5 +1,5 @@
 <?php
-$hostname="192.168.1.21";
+$hostname="127.0.0.1";
 $username="sa";
 $password="sa";
 $dbname="hosxp_pcu";
