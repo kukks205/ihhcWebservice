@@ -7,14 +7,24 @@ include '../includes/DBConn.php';
 
 $postData = json_decode( file_get_contents("php://input") );
 
-$obj = $db->query("select h.house_id as HID,h.village_id as VILLCODE,h.address as ADDRESS,h.road as ROAD,if(p.cid is null,'ยังไม่ระบุ',concat(p.pname,p.fname,'  ',p.lname)) as HEAD_NAME,
-h.latitude as LAT,h.longitude as LNG,v.village_moo as MOO,v.village_name as VILLNAME,if(hi.house_image_id,min(hi.house_image_id),0) as HOUSE_IMG,
-v.latitude as VLat,v.longitude as VLng
-from house as h
-join village as v on v.village_id=h.village_id
-left join person p on p.person_id =h.head_person_id
-left join house_image as hi on hi.house_id=h.house_id
-where h.latitude and h.longitude is not null and h.village_id='".$postData->vid."' group by h.house_id", PDO::FETCH_OBJ);
+$obj = $db->query("select
+h.hcode as HID,
+h.villcode as VILLCODE,
+h.hno as ADDRESS,
+h.road as ROAD,
+(select concat(p.fname,p.lname) as cc from person as p where p.pid=h.pid and p.hcode=h.hcode) as HEAD_NAME,
+h.ygis as LAT,
+h.xgis as LNG,
+v.villno as MOO,
+v.villname as VILLNAME,
+if(h.housepic is null,0,1) as HOUSE_IMG,
+h.ygis VLat,
+h.xgis as VLng
+from
+house as h,
+village as v 
+where v.pcucode = h.pcucode AND  v.villcode = h.villcode
+and v.villcode='".$postData->vid."' group by h.hcode", PDO::FETCH_OBJ);
 $json_data = [];
 
 foreach ($obj as $k) {

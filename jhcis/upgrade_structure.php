@@ -571,6 +571,38 @@ endif;
 
 // End check table hhc_person_adl_screen
 
+
+// start check table village_history
+$sql_village_history_check = "show tables like'village_history'";
+$result_village_history_check = $db->prepare($sql_village_history_check);
+$result_village_history_check->execute();
+
+if ($result_village_history_check->rowCount() > 0):
+    $village_history_check = '[' . date('Y-m-d H:i:s') . '] ' . "table village_history check pass.....[OK]<br>\n";
+    fputs($fp, $village_history_check);
+
+else:
+    $village_history_check = '[' . date('Y-m-d h:i:s') . '] ' . "table village_history empty กำลังนำเข้าตาราง....";
+    fputs($fp, $village_history_check);
+
+    $sql_village_history = "CREATE TABLE `village_history` (
+  `village_id` INTEGER(11) NOT NULL,
+  `village_history_id` INTEGER(11) NOT NULL,
+  `village_history_detail` VARCHAR(10000) COLLATE tis620_thai_ci NOT NULL DEFAULT '',
+  `hos_guid` VARCHAR(38) COLLATE tis620_thai_ci DEFAULT NULL,
+  `user_update` VARCHAR(9) COLLATE tis620_thai_ci DEFAULT NULL,
+  `entry_update` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`village_history_id`),
+  UNIQUE KEY `village_id` (`village_id`),
+  KEY `ix_hos_guid` (`hos_guid`)
+)ENGINE=InnoDB CHARACTER SET 'tis620' COLLATE 'tis620_thai_ci';";
+    $import = $db->exec($sql_village_history);
+    $import_village_history = "Import Table village_history Complete.....[OK]<br> \n  ";
+    fputs($fp, $import_village_history);
+endif;
+
+// End check table hhc_person_adl_screen
+
 fclose($fp);
 ?>
 
