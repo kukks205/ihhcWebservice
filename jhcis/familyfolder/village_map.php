@@ -17,7 +17,7 @@ h.ygis as LAT,
 h.xgis as LNG,
 v.villno as MOO,
 v.villname as VILLNAME,
-if(h.housepic is null,0,1) as HOUSE_IMG,
+if(h.housepic is null,0,h.hcode) as HOUSE_IMG,
 h.ygis VLat,
 h.xgis as VLng
 from

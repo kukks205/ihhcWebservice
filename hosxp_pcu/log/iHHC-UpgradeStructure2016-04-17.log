@@ -1,0 +1,9 @@
+[2016-04-17 00:35:14] table hhc_guideline_list check pass.....[OK]<br>
+[2016-04-17 00:35:14] table hhc_guideline_list_subtype check pass.....[OK]<br>
+[2016-04-17 00:35:14] table hhc_guideline_type check pass.....[OK]<br>
+[2016-04-17 00:35:14] table hhc_oxford_knee_score_screen check pass.....[OK]<br>
+[2016-04-17 00:35:14] table hhc_person_adl_screen check pass.....[OK]<br>
+[2016-04-17 00:35:14] table village_history check pass.....[OK]<br>
+[2016-04-17 00:35:15] table hhc_person_visit_vn check pass.....[OK]<br>
+[2016-04-17 12:35:15] table hhc_person_visit_type_map empty กำลังนำเข้าตาราง....Import Table hhc_person_visit_type_map Complete.....[OK]<br> 
+  
