@@ -22,7 +22,7 @@ class loginCheck {
 
 public function checkLogin($username, $password) {
 
-	        if ($username == null):
+	if ($username == null):
             
             $txt=['status'=>'notuser','token'=>'null','acsessright'=>'null'];
             
@@ -46,20 +46,22 @@ public function checkLogin($username, $password) {
                         while ($row = $result->fetch()) {
                             $token = $row['password'];
                             $accessright = $row['accessright'];
+                            $name =$row['name']; 
+                            $position = $row['entryposition'];
                         }
-            $txt=['status'=>'success','token'=>$token,'acsessright'=>$accessright];
+            $txt=['status'=>'success','token'=>$token,'acsessright'=>$accessright,'name'=>$name,'position'=>$position];
             
             $return=json_encode($txt);
 
                     else:
-            $txt=['status'=>'notsuccess','token'=>'null','acsessright'=>'null'];
+            $txt=['status'=>'notsuccess','token'=>'null','acsessright'=>'null','name'=>'null','position'=>'null'];
             
             $return=json_encode($txt);
 
                     endif;
 
                 else:
-            $txt=['status'=>'notpass','token'=>'null','acsessright'=>'null'];
+            $txt=['status'=>'notpass','token'=>'null','acsessright'=>'null','name'=>'null','position'=>'null'];
             
             $return=json_encode($txt);
 

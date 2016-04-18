@@ -10,7 +10,7 @@ $postData = json_decode( file_get_contents("php://input") );
 
 $obj = $db->query("select
 p.person_id as PID,p.house_id as HID,p.cid as CID,provis_pname_code as PRENAME,
-if(pi.person_id is null,(if(p.sex=1,1,2)),3) as PIMG,p.house_id as HID,
+if(pi.person_id is null,(if(p.sex=1,1,2)),3) as PIMG,
 p.fname as NAME,p.lname as LNAME,p.sex as SEX,p.birthdate as BIRTH,p.marrystatus as MSTATUS,
 p.education as EDUCATE,oc.nhso_code as OCCUPATION_NEW,n.nhso_code as NATION,
 n2.nhso_code as RACE,p.education as EDUCATION,

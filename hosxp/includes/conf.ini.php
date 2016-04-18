@@ -1,8 +1,8 @@
 <?php
-$hostname="192.168.1.24";
+$hostname="127.0.0.1";
 $username="sa";
 $password="sa";
-$dbname="hos_test";
+$dbname="hosxp_pcu";
 $charset="utf8";
 $port="3306";
 ?>

@@ -28,6 +28,8 @@ else:
   $osm_sid=$postData->osm_sid;
 endif;
 
+$osm_id=$postData->osm_id;
+
 
 
 $sql="update house set address='$address',
